@@ -6,13 +6,27 @@ async function main() {
     const delay = ms => new Promise(res => setTimeout(res, ms));
 
     // Start deployment, returning a promise that resolves to a contract object
-    const EVToken = await ethers.getContractFactory("EVToken");
+    // const EVToken = await ethers.getContractFactory("EVToken");
+    // total_supply = 30
+    // expiration_time = 5
+    // const evtoken = await EVToken.deploy(total_supply, expiration_time);
+    // console.log("EVToken contract deployed to address:", evtoken.address);
+
+    // await delay(5000);
+
+    // Start deployment, returning a promise that resolves to a contract object
+    const SoulboundNFT = await ethers.getContractFactory("SoulboundNFT");
     total_supply = 30
     expiration_time = 5
-    const evtoken = await EVToken.deploy(total_supply, expiration_time);
-    console.log("EVToken contract deployed to address:", evtoken.address);
+    nft_name = "soulboundNFT"
+    nft_symbol = "BEACON"
+    nft_uri = 'bafkreidj3oxldyyommv2hnhtlsg47hhgq4zu3vtuqfd4rrvgrslotor424'
 
-    await delay(5000);
+
+    const soulboundNFT = await SoulboundNFT.deploy(nft_name, nft_symbol, nft_uri, total_supply, expiration_time);
+    console.log("SoulboundNFT contract deployed to address:", soulboundNFT.address);
+
+    //await delay(5000);
 
     const SubjectAttribute = await ethers.getContractFactory("SubjectAttribute");
     const subjectattribute = await SubjectAttribute.deploy();
@@ -49,14 +63,17 @@ async function main() {
     subjectattribute_address = subjectattribute.address
     objectattribute_address = objectattribute.address
     policymanagement_address = policymanagement.address
-    evtoken_address = evtoken.address
+    soulboundnft_address = soulboundNFT.address
+    //evtoken_address = evtoken.address
 
     const AccessControl = await ethers.getContractFactory("AccessControl");
     const accesscontrol = await AccessControl.deploy(
         subjectattribute_address,
         objectattribute_address,
         policymanagement_address,
-        evtoken_address
+        soulboundnft_address
+
+      //  evtoken_address
     );
     console.log("AccessControl contract deployed to address:", accesscontrol.address);  
 }

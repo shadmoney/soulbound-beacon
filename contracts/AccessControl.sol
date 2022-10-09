@@ -5,6 +5,7 @@ import 'contracts/PolicyManagement.sol';
 import 'contracts/SubjectAttribute.sol';
 import 'contracts/ObjectAttribute.sol';
 import 'contracts/EVToken.sol';
+import 'contracts/SoulboundNFT.sol';
 
 contract AccessControl {
     // STRUCTS
@@ -150,9 +151,15 @@ contract AccessControl {
         // access to that object depending on error code from get_access function
         if (access == 0) {
             // Release an EV Token for the subject if access granted
-            EVToken token_contract = EVToken(token_address);
-            token_contract.transfer_from_admin(msg.sender, 1);
+            // EVToken token_contract = EVToken(token_address);
+
+            // Release a Soulbound NFT Token for the subject if access granted 
+            SoulboundNFT token_contract = SoulboundNFT(token_address);
+
+            token_contract.mint(msg.sender);
+
             emit AccessGranted(msg.sender, obj_addr, action);
+
         } else if (access == 1){
             emit AccessDenied(msg.sender, obj_addr, action, "No Match Policy");
         } else if (access == 2){
