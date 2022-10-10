@@ -1,4 +1,4 @@
-# Blockchain-ABAC
+# Blockchain-Enabled Access Control (BEACON)
 
 Create a .env file in the top-level directory with these environment variables
 
