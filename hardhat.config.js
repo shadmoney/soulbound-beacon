@@ -16,6 +16,10 @@ module.exports = {
       mumbai: {
         url: MUMBAI_API_URL,
         accounts: [`0x${PRIVATE_KEY_1}`]
-      }
+      },
+      metis: {
+         url: API_URL,
+         accounts: [`0x${PRIVATE_KEY_1}`]
+       }
    },
 }
