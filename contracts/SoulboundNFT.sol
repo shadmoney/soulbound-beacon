@@ -55,8 +55,8 @@ contract SoulboundNFT is ERC721, ERC721Enumerable, Pausable, Ownable {
         string memory _name,
         string memory _symbol,
         string memory _uri,
-        uint256 maxSupply,
-        uint256 expiration_time
+        uint256 maxSupply
+        // uint256 expiration_time
     ) payable ERC721(_name, _symbol) {
         _baseURIextended = _uri;
         MAX_SUPPLY = maxSupply;

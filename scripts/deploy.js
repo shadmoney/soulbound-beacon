@@ -22,8 +22,7 @@ async function main() {
     nft_symbol = "BEACON"
     nft_uri = 'bafkreidj3oxldyyommv2hnhtlsg47hhgq4zu3vtuqfd4rrvgrslotor424'
 
-
-    const soulboundNFT = await SoulboundNFT.deploy(nft_name, nft_symbol, nft_uri, total_supply, expiration_time);
+    const soulboundNFT = await SoulboundNFT.deploy(nft_name, nft_symbol, nft_uri, total_supply);
     console.log("SoulboundNFT contract deployed to address:", soulboundNFT.address);
 
     //await delay(5000);
