@@ -17,9 +17,13 @@ module.exports = {
         url: MUMBAI_API_URL,
         accounts: [`0x${PRIVATE_KEY_1}`]
       },
-      metis: {
-         url: API_URL,
-         accounts: [`0x${PRIVATE_KEY_1}`]
-       }
+     // metis: {
+     //    url: API_URL,
+     //    accounts: [`0x${PRIVATE_KEY_1}`]
+     //  }
    },
+   etherscan: {
+      apiKey: "DYJ8KAHE4FYGYJP9JC4AF3WKJBQ58SEYNP",
+    },
 }
+
